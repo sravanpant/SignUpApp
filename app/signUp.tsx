@@ -1,6 +1,6 @@
 import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link, useRouter } from "expo-router";
+import { Link } from "expo-router";
 import { useFonts } from "expo-font";
 import { useCallback, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
@@ -14,13 +14,11 @@ import GoogleButton from "@/components/GoogleButton";
 SplashScreen.preventAutoHideAsync();
 
 export default function SignIn() {
-  const [signedIn, setSignedIn] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
-  const router = useRouter();
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -31,8 +29,7 @@ export default function SignIn() {
     promotion: toggleCheckBox,
   };
   const signUp = () => {
-    setSignedIn(true);
-    router.replace("/(tabs)");
+    // console.log(userDetails);
   };
 
   const [fontsLoaded, fontError] = useFonts({

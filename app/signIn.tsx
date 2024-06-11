@@ -1,61 +1,28 @@
 import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link, useRouter } from "expo-router";
-import { useFonts } from "expo-font";
-import { useCallback, useState } from "react";
-import * as SplashScreen from "expo-splash-screen";
+import { Link } from "expo-router";
+import { useState } from "react";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { ThemedText } from "@/components/ThemedText";
-import Checkbox from "expo-checkbox";
 import CustomButton from "@/components/CustomButton";
 import GoogleButton from "@/components/GoogleButton";
 
-SplashScreen.preventAutoHideAsync();
-
 export default function SignIn() {
-  const [signedIn, setSignedIn] = useState(true);
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
-  const router = useRouter();
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
   const userDetails = {
-    name: name,
     email: email,
     password: password,
-    promotion: toggleCheckBox,
   };
-  const signUp = () => {
-    setSignedIn(true);
-    router.replace("/(tabs)");
+  const signIn = () => {
+    // console.log(userDetails);
   };
 
-  const [fontsLoaded, fontError] = useFonts({
-    InterBold: require("../assets/fonts/Inter-Bold.otf"),
-    InterBlack: require("../assets/fonts/Inter-Black.otf"),
-    InterExtraBold: require("../assets/fonts/Inter-ExtraBold.otf"),
-    InterExtraLight: require("../assets/fonts/Inter-ExtraLight.otf"),
-    InterLight: require("../assets/fonts/Inter-Light.otf"),
-    InterMedium: require("../assets/fonts/Inter-Medium.otf"),
-    InterRegular: require("../assets/fonts/Inter-Regular.otf"),
-    InterSemiBold: require("../assets/fonts/Inter-SemiBold.otf"),
-    InterThin: require("../assets/fonts/Inter-Thin.otf"),
-  });
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
-
-  if (!fontsLoaded && !fontError) {
-    return null;
-  }
   return (
     <SafeAreaView>
       <View className="px-4">
@@ -65,32 +32,18 @@ export default function SignIn() {
           </View>
           <View>
             <ThemedText className="text-white text-3xl" type="subtitle">
-              Sign Up
+              Sign In
             </ThemedText>
           </View>
           <View>
-            <Link href={"/signIn"}>
+            <Link href={"/"}>
               <ThemedText className="text-[#5DB075] text-base font-medium">
-                Login
+                Sign Up
               </ThemedText>
             </Link>
           </View>
         </View>
         <View className="mt-10" />
-        <View className="mt-8 mb-4 mx-6 space-x-4 flex-row items-center justify-end">
-          <TextInput
-            style={styles.font}
-            placeholder="Name"
-            placeholderTextColor={"#B6BBC4"}
-            value={name}
-            onChangeText={setName}
-            textContentType="name"
-            className="border flex absolute w-full bg-[#333]  text-[#fff] border-[#B6BBC4] rounded-lg p-3 text-base"
-          />
-          <View className="mx-4">
-            <MaterialIcons name="person" size={24} color="#B6BBC4" />
-          </View>
-        </View>
 
         <View className="mt-8 mb-4 mx-6 flex-row items-center justify-end">
           <TextInput
@@ -126,31 +79,14 @@ export default function SignIn() {
             />
           </TouchableOpacity>
         </View>
-
         <View className="mt-6 mb-3 mx-6 flex-row items-center justify-center">
-          <CustomButton title="Sign Up" onPress={signUp} />
+          <CustomButton title="Sign In" onPress={signIn} />
         </View>
-
         <View className="mt-6 mb-4 mx-6 flex-row items-center justify-center">
           <ThemedText>OR</ThemedText>
         </View>
         <View className="mt-6 mb-4 mx-6 flex-row items-center justify-center">
-          <GoogleButton text="Sign Up" onPress={() => {}} />
-        </View>
-        <View className="mt-8 mb-4 mx-6 flex-row items-start justify-start">
-          <View className="py-1.5">
-            <Checkbox
-              value={toggleCheckBox}
-              onValueChange={setToggleCheckBox}
-              color={toggleCheckBox ? "#5DB075" : undefined}
-            />
-          </View>
-          <View className="mx-3">
-            <ThemedText className="text-[#B6BBC4] text-base">
-              I would like to receive your newsletter and other promotional
-              information.
-            </ThemedText>
-          </View>
+          <GoogleButton text="Sign In" onPress={() => {}} />
         </View>
       </View>
     </SafeAreaView>

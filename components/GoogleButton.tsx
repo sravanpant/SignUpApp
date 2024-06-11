@@ -8,14 +8,14 @@ type googleButtonProps = {
   onPress: () => void;
 };
 
-export default function GoogleButton({text, onPress }: googleButtonProps) {
+export default function GoogleButton({ text, onPress }: googleButtonProps) {
   return (
     <Pressable
       onPress={onPress}
       className="w-full flex-row items-center space-x-2  justify-center px-3 py-3.5 rounded-full bg-[#F2F2F2]"
     >
       <Image className="w-8 h-8" source={googleLogo} />
-      <ThemedText type="default" className="text-[#1F1F1F] space-y-1">
+      <ThemedText type="defaultSemiBold" className="text-[#1F1F1F] space-y-1">
         {text} with Google
       </ThemedText>
     </Pressable>
