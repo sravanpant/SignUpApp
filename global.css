@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "InterDisplay";
+    font-weight: 400;
+    src: url("/assets/fonts/InterDisplay-Regular.otf") format("opentype");
+  }
+
+  /* Apply the custom font globally */
+  body {
+    @apply font-inter;
+  }
+}
