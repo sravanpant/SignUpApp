@@ -12,12 +12,14 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarInactiveTintColor: Colors[colorScheme ?? "light"].text,
-        tabBarLabelStyle: { fontSize: 13, fontFamily: "InterRegular" },
+        tabBarLabelStyle: {
+          fontSize: 13,
+          fontFamily: "InterRegular",
+          color: "#B6BBC4",
+        },
         tabBarStyle: {
-          borderRadius: 24,
-          marginHorizontal: 8,
-          marginVertical: 12,
-          backgroundColor: "#222831",
+          shadowColor: "#000",
+          backgroundColor: "#000",
           height: 90,
           paddingBottom: 15,
         },
